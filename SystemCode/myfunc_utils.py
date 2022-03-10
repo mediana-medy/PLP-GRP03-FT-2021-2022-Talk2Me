@@ -1,3 +1,5 @@
+from config import *
+
 def chat_func(msg):
     return ""
 
