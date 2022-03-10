@@ -1,4 +1,4 @@
-import telebot
+import del_telebot
 # from telebot import TeleBot
 from config import *
 import time

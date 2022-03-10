@@ -16,3 +16,7 @@ WELCOME_MSG = [
     ". Welcome to Talk2Me Chatbot.\n"
     "How can I assist you today?"
 ]
+
+END_MSG = [
+
+]
