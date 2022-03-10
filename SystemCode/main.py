@@ -20,12 +20,14 @@ def request_handler(msg):  # directly monitor telegram
 
     if start == 0 and msg_type == 'text':
         user_utterances = str(msg['text'])
-        if re.search(CHAT_REGEX, user_utterances.lower()):
-            response = "CHAT response to " + user_utterances + chat_func(user_utterances)
-            bot.sendMessage(chat_id, response)
-        elif re.search(HOTLINE_REGEX, user_utterances.lower()):
+        if re.search(HOTLINE_REGEX, user_utterances.lower()):
             response = "HOTLINE response to " + user_utterances + hotline_func(user_utterances)
             bot.sendMessage(chat_id, response)
+        elif re.search(CHAT_REGEX, user_utterances.lower()):
+            response = "CHAT response to " + user_utterances + chat_func(user_utterances)
+            bot.sendMessage(chat_id, response)
+        else:
+            response = "Response: " + user_utterances
 
 bot = telepot.Bot(BOT_TOKEN)
 MessageLoop(bot, request_handler).run_as_thread()
