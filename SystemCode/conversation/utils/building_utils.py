@@ -23,10 +23,10 @@ def build_model(only_toker=False, checkpoint=None, local_rank=-1, **kwargs):
     assert 'config_name' in kwargs
     config_name = kwargs.pop('config_name')
     
-    if not os.path.exists(f'./CONFIG/{config_name}.json'):
+    if not os.path.exists(f'conversation/CONFIG/{config_name}.json'):
         raise ValueError
     
-    with open(f'./CONFIG/{config_name}.json', 'r', encoding='utf-8') as f:
+    with open(f'conversation/CONFIG/{config_name}.json', 'r', encoding='utf-8') as f:
         config = json.load(f)
     
     if 'model_name' not in config or 'pretrained_model_path' not in config:
@@ -40,6 +40,7 @@ def build_model(only_toker=False, checkpoint=None, local_rank=-1, **kwargs):
     
     Model = models[config['model_name']]
     model = Model.from_pretrained(config['pretrained_model_path'])
+
     if config.get('custom_config_path', None) is not None:
         model = Model(AutoConfig.from_pretrained(config['custom_config_path']))
     

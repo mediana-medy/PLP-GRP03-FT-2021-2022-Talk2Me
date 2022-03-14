@@ -45,7 +45,7 @@ class Args():
        self.config_name = 'strat'
        self.inputter_name = 'strat'
        self.seed = 3
-       self.load_checkpoint = 'SystemCode\conversation\2022-03-101032826.3e-05.1.1gpu\epoch-1.bin'
+       self.load_checkpoint = 'conversation/checkpoint_/epoch-1.bin'
        self.fp16 = False
        self.max_src_len = 150
        self.max_tgt_len = 50
@@ -58,9 +58,15 @@ class Args():
        self.repetition_penalty = 1
        self.no_repeat_ngram_size = 3
        self.use_gpu = True
+       self.single_turn = True
+       self.max_input_length = 256
+       self.max_src_turn=20
+       self.max_decoder_input_length = 64
+       self.max_knl_len = 64
+       self.label_num = None
+
 
 def chat_conv(msg):
-
     args = Args()
 
     device = torch.device("cuda" if torch.cuda.is_available() and args.use_gpu else "cpu")
@@ -77,7 +83,6 @@ def chat_conv(msg):
     os.makedirs(output_dir, exist_ok=True)
 
     # set_seed(args.seed)
-
     names = {
         'inputter_name': args.inputter_name,
         'config_name': args.config_name,
@@ -135,7 +140,6 @@ def chat_conv(msg):
         try:
             if args.single_turn and len(history['dialog']) > 0:
                 raise EOFError
-            print(msg)
             while not msg:
                 return "invalid"
             eof_once = False
@@ -180,8 +184,6 @@ def chat_conv(msg):
         out = cut_seq_to_eos(out, eos)
         text = toker.decode(out).encode('ascii', 'ignore').decode('ascii').strip()
 
-        print("   AI: " + text)
-
         history['dialog'].pop()
         history['dialog'].append({
             'text': text,
@@ -189,6 +191,6 @@ def chat_conv(msg):
             'strategy': strategy,
         })
 
-        return "AI" + text
+        return "AI: " + text
 
 

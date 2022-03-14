@@ -26,13 +26,13 @@ def request_handler(msg):  # directly monitor telegram
             print(user_utterances, response)
             bot.sendMessage(chat_id, response)
         elif re.search(CHAT_REGEX, user_utterances.lower()):
-            response = "CHAT response to " + user_utterances + chat_conv(user_utterances)
-            print(user_utterances, response)
+            response = chat_conv(user_utterances)
+            print(response)
             bot.sendMessage(chat_id, response)
-        else:
-            response = "Response: " + user_utterances
-            print(user_utterances, response)
-            bot.sendMessage(chat_id, response)
+        # else:
+        #     response = "Response: " + user_utterances
+        #     print(user_utterances, response)
+        #     bot.sendMessage(chat_id, response)
 
 bot = telepot.Bot(BOT_TOKEN)
 MessageLoop(bot, request_handler).run_as_thread()
