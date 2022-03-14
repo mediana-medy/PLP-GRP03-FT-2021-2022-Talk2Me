@@ -5,7 +5,7 @@ import telepot
 from telepot.loop import MessageLoop
 from myfunc_utils import *
 from config import *
-
+from conversation.conv_interact import *
 
 def request_handler(msg):  # directly monitor telegram
     (msg_type, chat_type, chat_id) = telepot.glance(msg)
@@ -26,7 +26,7 @@ def request_handler(msg):  # directly monitor telegram
             print(user_utterances, response)
             bot.sendMessage(chat_id, response)
         elif re.search(CHAT_REGEX, user_utterances.lower()):
-            response = "CHAT response to " + user_utterances + chat_func(user_utterances)
+            response = "CHAT response to " + user_utterances + chat_conv(user_utterances)
             print(user_utterances, response)
             bot.sendMessage(chat_id, response)
         else:
