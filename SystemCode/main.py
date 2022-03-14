@@ -29,6 +29,10 @@ def request_handler(msg):  # directly monitor telegram
             response = chat_conv(user_utterances)
             print(response)
             bot.sendMessage(chat_id, response)
+        else:
+            response = chat_conv(user_utterances)
+            print(response)
+            bot.sendMessage(chat_id, response)
         # else:
         #     response = "Response: " + user_utterances
         #     print(user_utterances, response)

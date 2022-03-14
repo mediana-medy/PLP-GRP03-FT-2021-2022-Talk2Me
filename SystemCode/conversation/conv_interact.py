@@ -135,7 +135,7 @@ def chat_conv(msg):
 
     strategies = ["Question", "Affirmation and Reassurance", "Information", "Self-disclosure", "Providing Suggestions",
                   "Restatement or Paraphrasing", "Others"]
-
+    print(history)
     while True:
         try:
             if args.single_turn and len(history['dialog']) > 0:
