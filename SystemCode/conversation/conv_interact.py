@@ -44,10 +44,19 @@ class Args():
    def __init__(self):
        self.config_name = 'strat'
        self.inputter_name = 'strat'
-
-
-
-
+       self.seed = 3
+       self.load_checkpoint = ''
+       self.fp16 = false
+       self.max_src_len = 150
+       self.max_tgt_len = 50
+       self.max_length = 50
+       self.min_length = 10
+       self.temperature = 0.7
+       self.top_k = 0
+       self.top_p = 0.9
+       self.num_beams = 1
+       self.repetition_penalty = 1
+       self.no_repeat_ngram_size = 3
 
 args = Args()
 
