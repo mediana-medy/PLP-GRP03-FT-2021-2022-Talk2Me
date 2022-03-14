@@ -21,9 +21,9 @@ import argparse
 import random
 
 from transformers.trainer_utils import set_seed
-from utils.building_utils import boolean_string, build_model, deploy_model
-from inputters import inputters
-from inputters.inputter_utils import _norm
+from SystemCode.conversation.utils.building_utils import boolean_string, build_model, deploy_model
+from SystemCode.conversation.inputters import inputters
+from SystemCode.conversation.inputters.inputter_utils import _norm
 
 
 def cut_seq_to_eos(sentence, eos, remove_id=None):
@@ -45,7 +45,7 @@ class Args():
        self.config_name = 'strat'
        self.inputter_name = 'strat'
        self.seed = 3
-       self.load_checkpoint = ''
+       self.load_checkpoint = 'SystemCode\conversation\2022-03-101032826.3e-05.1.1gpu\epoch-1.bin'
        self.fp16 = False
        self.max_src_len = 150
        self.max_tgt_len = 50
@@ -57,6 +57,7 @@ class Args():
        self.num_beams = 1
        self.repetition_penalty = 1
        self.no_repeat_ngram_size = 3
+       self.use_gpu = True
 
 def chat_conv(msg):
 
