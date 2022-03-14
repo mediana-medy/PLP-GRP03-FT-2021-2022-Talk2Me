@@ -17,7 +17,7 @@
 |Zeng Hanyu | A0231558A|XX |e0703590@u.nus.edu |
 |Liu Ding | A0231429J |XX |e0703461@u.nus.edu |
 | Mediana | A0231458E |  XX | mediana@u.nus.edu |
-|XX | XX |XX |XX |
+|Sarah Wong | A0231507N |XX | e0703539@u.nus.edu |
 
 ---
 
