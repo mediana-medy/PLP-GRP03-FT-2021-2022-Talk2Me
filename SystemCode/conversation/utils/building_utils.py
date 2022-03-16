@@ -6,7 +6,7 @@ import logging
 import torch
 from os.path import join
 
-from SystemCode.conversation.models import models
+from SystemCode.conversation.models.strat_blenderbot_small import Model as strat_blenderbot_small
 from transformers import (AutoTokenizer, AutoModel, AutoConfig)
 from torch.distributed import get_rank
 
@@ -38,7 +38,7 @@ def build_model(only_toker=False, checkpoint=None, local_rank=-1, **kwargs):
             toker.add_tokens(config['expanded_vocab'], special_tokens=True)
         return toker
     
-    Model = models[config['model_name']]
+    Model = strat_blenderbot_small
     model = Model.from_pretrained(config['pretrained_model_path'])
 
     if config.get('custom_config_path', None) is not None:
