@@ -42,10 +42,11 @@ def request_handler(msg):  # directly monitor telegram
             bot.sendMessage(chat_id, str(end_msg))
             # get the high/low risk score of the user (0 to 1) based on the dialogue history
             risk_score = get_risk(history)
+            print("Risk Score:", risk_score)
             # if user risk_score is above threshold, send additional help links
-            if risk_score > 0.2:
-                bot.sendMessage(chat_id, str(PROFESSIONAL_HELP_MSG[0]))
+            if risk_score > 0.3:
                 print(str(PROFESSIONAL_HELP_MSG[0]))
+                bot.sendMessage(chat_id, str(PROFESSIONAL_HELP_MSG[0]))
         elif re.search(CHAT_REGEX, user_utterances.lower()):
             response = chat_conv(user_utterances, history)
             print(response)
