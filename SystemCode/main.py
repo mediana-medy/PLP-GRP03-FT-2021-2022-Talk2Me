@@ -6,6 +6,7 @@ from telepot.loop import MessageLoop
 from myfunc_utils import *
 from config import *
 from conversation.conv_interact import *
+from risk_inference import get_risk
 
 history = {'dialog': [], }
 USER_END_PHRASES = [
@@ -16,7 +17,6 @@ USER_END_PHRASES = [
     "okay",
     "ok"
 ]
-condition_high = True
 
 def request_handler(msg):  # directly monitor telegram
     (msg_type, chat_type, chat_id) = telepot.glance(msg)
@@ -37,12 +37,15 @@ def request_handler(msg):  # directly monitor telegram
             print(user_utterances, response)
             bot.sendMessage(chat_id, response)
         elif user_utterances.lower() in USER_END_PHRASES:
-            end_msg = random.choice(END_MSG)
+            end_msg = "AI: " + random.choice(END_MSG)
             print(end_msg)
             bot.sendMessage(chat_id, str(end_msg))
-            ###TO-DO: add the function to do inference of condition (high/low)
-            ### If condition_high = True, then follow up with the links for professional help
-
+            # get the high/low risk score of the user (0 to 1) based on the dialogue history
+            risk_score = get_risk(history)
+            # if user risk_score is above threshold, send additional help links
+            if risk_score > 0.2:
+                bot.sendMessage(chat_id, str(PROFESSIONAL_HELP_MSG[0]))
+                print(str(PROFESSIONAL_HELP_MSG[0]))
         elif re.search(CHAT_REGEX, user_utterances.lower()):
             response = chat_conv(user_utterances, history)
             print(response)

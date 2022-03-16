@@ -21,3 +21,7 @@ END_MSG = [
     "Take care and have a great day!",
     "Feel free to come chat with me again anytime!"
 ]
+
+PROFESSIONAL_HELP_MSG = [
+    "For professional counselling services, you may wish to consider trying out SCC. https://scc.sg/e/"
+]
