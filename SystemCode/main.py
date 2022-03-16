@@ -7,6 +7,8 @@ from myfunc_utils import *
 from config import *
 from conversation.conv_interact import *
 
+history = {'dialog': [], }
+
 def request_handler(msg):  # directly monitor telegram
     (msg_type, chat_type, chat_id) = telepot.glance(msg)
     print(msg_type, chat_type, chat_id, msg["from"]["username"], msg["text"])
@@ -26,13 +28,14 @@ def request_handler(msg):  # directly monitor telegram
             print(user_utterances, response)
             bot.sendMessage(chat_id, response)
         elif re.search(CHAT_REGEX, user_utterances.lower()):
-            response = chat_conv(user_utterances)
+            response = chat_conv(user_utterances, history)
             print(response)
             bot.sendMessage(chat_id, response)
         else:
-            response = chat_conv(user_utterances)
+            response = chat_conv(user_utterances, history)
             print(response)
             bot.sendMessage(chat_id, response)
+        print(history)
         # else:
         #     response = "Response: " + user_utterances
         #     print(user_utterances, response)

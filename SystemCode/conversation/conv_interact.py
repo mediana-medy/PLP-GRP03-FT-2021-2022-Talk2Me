@@ -58,7 +58,7 @@ class Args():
        self.repetition_penalty = 1
        self.no_repeat_ngram_size = 3
        self.use_gpu = True
-       self.single_turn = True
+       self.single_turn = False
        self.max_input_length = 256
        self.max_src_turn=20
        self.max_decoder_input_length = 64
@@ -66,7 +66,7 @@ class Args():
        self.label_num = None
 
 
-def chat_conv(msg):
+def chat_conv(msg, history):
     args = Args()
 
     device = torch.device("cuda" if torch.cuda.is_available() and args.use_gpu else "cpu")
@@ -131,11 +131,11 @@ def chat_conv(msg):
     }
 
     eof_once = False
-    history = {'dialog': [], }
+    #history = {'dialog': [], }
 
     strategies = ["Question", "Affirmation and Reassurance", "Information", "Self-disclosure", "Providing Suggestions",
                   "Restatement or Paraphrasing", "Others"]
-    print(history)
+
     while True:
         try:
             if args.single_turn and len(history['dialog']) > 0:
