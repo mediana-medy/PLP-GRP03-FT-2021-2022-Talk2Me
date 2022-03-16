@@ -28,9 +28,12 @@ def get_risk(history):
     with open('condition.pickle', 'rb') as handle:
         tokenizer = pickle.load(handle)
 
-    predictions = evaluate_text(model,tokenizer,Clean_Texts)
+    if Clean_Texts.size > 0:
+        predictions = evaluate_text(model,tokenizer,Clean_Texts)
 
-    risk_score = sum(predictions)/len(predictions)
+        risk_score = sum(predictions)/len(predictions)
+    else:
+        risk_score = -1
 
     return risk_score
 
