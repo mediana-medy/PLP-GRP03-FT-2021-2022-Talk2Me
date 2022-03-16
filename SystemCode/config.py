@@ -18,5 +18,6 @@ WELCOME_MSG = [
 ]
 
 END_MSG = [
-
+    "Take care and have a great day!",
+    "Feel free to come chat with me again anytime!"
 ]
