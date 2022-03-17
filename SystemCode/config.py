@@ -42,7 +42,7 @@ HOTLINES_LIST = [
     "- Samaritans of Singapore (1800-221-4444)\n"
     "- Silver Ribbon Singapore (6385-3714)\n"
     "- Marital and parenting issues\n"
-    "- Community Psychology Hub’s Online Counselling platform",
+    "- Community Psychology Hub’s Online Counselling platform.",
 
     "Violence or abuse\n"
     "- Big Love Child Protection Specialist Centre (6445-0400)\n"
