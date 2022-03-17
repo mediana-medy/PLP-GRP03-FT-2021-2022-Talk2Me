@@ -32,10 +32,8 @@ def request_handler(msg):  # directly monitor telegram
         user_utterances = str(msg['text'])
 
         if re.search(HOTLINE_REGEX, user_utterances.lower()):
-            response = "HOTLINE response to " + user_utterances
-            ##### "Multiple Messages"
-            print(user_utterances, response)
-            bot.sendMessage(chat_id, response)
+            for resources in HOTLINES_LIST:
+                bot.sendMessage(chat_id, resources)
         elif user_utterances.lower() in USER_END_PHRASES:
             end_msg = "AI: " + random.choice(END_MSG)
             print(end_msg)
