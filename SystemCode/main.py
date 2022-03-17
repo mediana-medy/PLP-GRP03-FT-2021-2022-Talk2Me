@@ -57,10 +57,6 @@ def request_handler(msg):  # directly monitor telegram
             bot.sendMessage(chat_id, response)
 
         print(history)
-        # else:
-        #     response = "Response: " + user_utterances
-        #     print(user_utterances, response)
-        #     bot.sendMessage(chat_id, response)
 
 bot = telepot.Bot(BOT_TOKEN)
 MessageLoop(bot, request_handler).run_as_thread()
