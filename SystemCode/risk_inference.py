@@ -20,6 +20,11 @@ def get_risk(history):
     # remove punctuations
     Clean_Texts = Clean_Texts.apply(nfx.remove_punctuations)
 
+    combined_user_texts = ''
+    for idx, text in Clean_Texts.items():
+        combined_user_texts = combined_user_texts + " " + text
+    combined_user_texts = pd.Series([combined_user_texts.strip()])
+
     # load model
     model = load_model('model/condition_bilstm_rec_dp.h5')
 
@@ -28,8 +33,8 @@ def get_risk(history):
     with open('condition.pickle', 'rb') as handle:
         tokenizer = pickle.load(handle)
 
-    if Clean_Texts.size > 0:
-        predictions = evaluate_text(model,tokenizer,Clean_Texts)
+    if combined_user_texts.size > 0:
+        predictions = evaluate_text(model,tokenizer,combined_user_texts)
 
         risk_score = sum(predictions)/len(predictions)
     else:
