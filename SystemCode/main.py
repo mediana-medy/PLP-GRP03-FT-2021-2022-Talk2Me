@@ -3,7 +3,6 @@ import time
 import re
 import telepot
 from telepot.loop import MessageLoop
-from myfunc_utils import *
 from config import *
 from conversation.conv_interact import *
 from risk_inference import get_risk
@@ -33,7 +32,8 @@ def request_handler(msg):  # directly monitor telegram
         user_utterances = str(msg['text'])
 
         if re.search(HOTLINE_REGEX, user_utterances.lower()):
-            response = "HOTLINE response to " + user_utterances + hotline_func(user_utterances)
+            response = "HOTLINE response to " + user_utterances
+            ##### "Multiple Messages"
             print(user_utterances, response)
             bot.sendMessage(chat_id, response)
         elif user_utterances.lower() in USER_END_PHRASES:
