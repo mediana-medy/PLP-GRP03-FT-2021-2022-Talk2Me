@@ -58,5 +58,5 @@ HOTLINES_LIST = [
     "- go.gov.sg/hotlines (BELLE, Beyond the Label helpbot)\n"
     "- www.msf.gov.sg/Pages/Contact-Us.aspx",
 
-    "Don’t hesitate to reach out if you are feeling weighed down by issues"
+    "Don’t hesitate to reach out if you are feeling weighed down by issues."
 ]
