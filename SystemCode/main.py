@@ -6,6 +6,7 @@ from telepot.loop import MessageLoop
 from config import *
 from conversation.conv_interact import *
 from risk_inference import get_risk
+from condition_inference import condition_classify
 
 history = {'dialog': [], }
 USER_END_PHRASES = [
@@ -39,8 +40,11 @@ def request_handler(msg):  # directly monitor telegram
             print(end_msg)
             bot.sendMessage(chat_id, str(end_msg))
             # get the high/low risk score of the user (0 to 1) based on the dialogue history
-            risk_score = get_risk(history)
+            risk_score, combined_user_texts = get_risk(history)
             print("Risk Score:", risk_score)
+            # get the final condition type ['emotional','family','friendship','others','relationship','school','work']
+            condition_type = condition_classify(combined_user_texts)
+            print("Condition Type:", condition_type)
             # if user risk_score is above threshold, send additional help links
             if risk_score > 0.5:
                 print(str(PROFESSIONAL_HELP_MSG[0]))

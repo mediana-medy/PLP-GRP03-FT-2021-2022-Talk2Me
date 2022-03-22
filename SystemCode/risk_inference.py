@@ -23,7 +23,7 @@ def get_risk(history):
     combined_user_texts = ''
     for idx, text in Clean_Texts.items():
         combined_user_texts = combined_user_texts + " " + text
-    combined_user_texts = pd.Series([combined_user_texts.strip()])
+    combined_user_texts_series = pd.Series([combined_user_texts.strip()])
 
     # load model
     model = load_model('model/condition_bilstm_rec_dp.h5')
@@ -33,14 +33,14 @@ def get_risk(history):
         tokenizer = pickle.load(handle)
 
     # Input the combined_user_texts to the risk prediction model if it is not empty
-    if combined_user_texts.size > 0:
-        predictions = evaluate_text(model,tokenizer,combined_user_texts)
+    if combined_user_texts_series.size > 0:
+        predictions = evaluate_text(model,tokenizer,combined_user_texts_series)
 
         risk_score = sum(predictions)/len(predictions)
     else:
         risk_score = -1
 
-    return risk_score
+    return risk_score, combined_user_texts
 
 # Function to input text (Series) into the risk prediction model and get the risk score
 def evaluate_text(model, tokenizer, text):
