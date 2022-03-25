@@ -8,34 +8,13 @@
 
 from __future__ import print_function
 
-import pandas as pd
 import numpy as np
 
-from keras import layers
-from keras.preprocessing import sequence
-from keras.models import Sequential
 from keras.preprocessing.text import Tokenizer, one_hot
 from keras.preprocessing.sequence import pad_sequences
 from keras.layers import Embedding, Conv1D, GlobalMaxPooling1D, Reshape, Dense, Dropout, Flatten, MaxPooling1D, Input, \
     Concatenate, LSTM, Bidirectional
 from keras.models import load_model
-from keras.models import Model
-
-from numpy import array
-from numpy import argmax
-from sklearn.preprocessing import LabelEncoder
-from sklearn.preprocessing import OneHotEncoder
-
-import sklearn
-from sklearn.model_selection import train_test_split
-from sklearn.utils import class_weight
-from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
-import joblib
-
-import matplotlib.pyplot as plt
-from plot_keras_history import plot_history
-import tensorflow as tf
-from tensorflow.keras.utils import plot_model
 
 import pickle
 

@@ -3,7 +3,6 @@ BOT_TOKEN = '5279915402:AAEt6JIgjIW9uI_y6eYCnxW_HQKLld7RTSU'
 START_REGEX = "\/?start$"
 CHAT_REGEX = "\/?chat$"
 HOTLINE_REGEX = "\/?hotlines?$"
-HOTLINE_FILENAME = "SystemCode/HOTLINE_RESOURCES.txt"
 
 GREETINGS = ["Hello ", "Hi ", "Good Day, "]
 WELCOME_MSG = [

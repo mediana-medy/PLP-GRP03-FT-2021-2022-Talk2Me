@@ -1,0 +1,2 @@
+username, condition_type, risk_score, feedback
+Medzzy, emotional, 0.27350265

@@ -31,7 +31,6 @@ def request_handler(msg):  # directly monitor telegram
 
     if start == 0 and msg_type == 'text':
         user_utterances = str(msg['text'])
-
         if re.search(HOTLINE_REGEX, user_utterances.lower()):
             for resources in HOTLINES_LIST:
                 bot.sendMessage(chat_id, resources)
@@ -49,6 +48,17 @@ def request_handler(msg):  # directly monitor telegram
             if risk_score > 0.5:
                 print(str(PROFESSIONAL_HELP_MSG[0]))
                 bot.sendMessage(chat_id, str(PROFESSIONAL_HELP_MSG[0]))
+
+            #TO BE UPDATED WITH FEEDBACK
+            # bot.sendMessage(chat_id, str("Feedback: "))
+            # fb_resp = bot.getUpdates()
+            fb_resp=""
+            with open("insight_data.txt", "a") as file_object:
+                # Append 'hello' at the end of file
+                data_user = str(msg['from']['username']) + ", " \
+                            + str(condition_type[0]) + ", " + str(risk_score[0]) + ", " + fb_resp + "\n"
+                file_object.write(data_user)
+
         elif re.search(CHAT_REGEX, user_utterances.lower()):
             response = chat_conv(user_utterances, history)
             print(response)
