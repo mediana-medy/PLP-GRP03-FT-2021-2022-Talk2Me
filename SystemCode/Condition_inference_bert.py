@@ -159,4 +159,4 @@ def predict_sentiment(sentence):
 
 
 if __name__ == '__main__':
-    predict_sentiment("I have totally a bad day")
+    predict_sentiment("I have totally a bad day") 
