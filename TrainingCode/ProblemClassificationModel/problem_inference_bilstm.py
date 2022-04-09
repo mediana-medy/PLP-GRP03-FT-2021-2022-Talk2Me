@@ -24,7 +24,7 @@ def problem_classify(str):
 
     # loading saved tokenizer
     tokenizer = Tokenizer()
-    with open('../../SystemCode/model/condition_bilstm.pickle', 'rb') as handle:
+    with open('../../SystemCode/condition/condition_bilstm.pickle', 'rb') as handle:
         tokenizer = pickle.load(handle)
 
     word_index = tokenizer.word_index  # A dictionary like "i" : 1 ; not necessary, but make it easier to match words with GLOVE_6B

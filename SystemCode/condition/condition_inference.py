@@ -26,16 +26,15 @@ def get_risk(history, username):
     combined_user_texts_series = pd.Series([combined_user_texts.strip()])
 
     # load model
-    model = load_model('model/condition_bilstm_rec_dp.h5')
+    model = load_model('condition/condition_bilstm_rec_dp.h5')
 
     # loading saved tokenizer
-    with open('model/condition_bilstm.pickle', 'rb') as handle:
+    with open('condition/condition_bilstm.pickle', 'rb') as handle:
         tokenizer = pickle.load(handle)
 
     # Input the combined_user_texts to the risk prediction model if it is not empty
     if combined_user_texts_series.size > 0:
         predictions = evaluate_text(model,tokenizer,combined_user_texts_series)
-
         risk_score = sum(predictions)/len(predictions)
     else:
         risk_score = -1

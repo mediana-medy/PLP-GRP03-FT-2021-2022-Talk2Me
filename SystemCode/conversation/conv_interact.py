@@ -122,8 +122,8 @@ def chat_conv(msg, history, username):
     #history = {'dialog': [], }
 
     # Conversation strategies for early, mid, late conversation stages
-    strategies_1 = ["Question", "Restatement or Paraphrasing", "Reflection of feelings", "Self-disclosure"]
-    strategies_2 = ["Reflection of feelings", "Self-disclosure", "Affirmation and Reassurance", "Others"]
+    strategies_1 = ["Question", "Restatement or Paraphrasing"]
+    strategies_2 = ["Reflection of feelings", "Self-disclosure", "Affirmation and Reassurance"]
     strategies_3 = ["Self-disclosure", "Affirmation and Reassurance", "Providing Suggestions", "Information", "Others"]
 
     while True:
@@ -154,17 +154,14 @@ def chat_conv(msg, history, username):
             'speaker': 'usr',
         })
 
-        # for the first 3 user utterances, take a strategy from strategies_1 list
-        if len(history[username]) < 7:
-            print("Le")
+        # for the first 2 user utterances, take a strategy from strategies_1 list
+        if len(history[username]) < 5:
             strategy = random.choice(strategies_1)
-        # for the next 3 user utterances, take a strategy from strategies_2 list
-        elif len(history[username]) > 6 and len(history[username]) < 13:
-            print("mid")
+        # for the next 2 user utterances, take a strategy from strategies_2 list
+        elif len(history[username]) > 4 and len(history[username]) < 9:
             strategy = random.choice(strategies_2)
-        # for 7th and after user utterances, take a strategy from strategies_3 list
+        # for 5th and after user utterances, take a strategy from strategies_3 list
         else:
-            print("end")
             strategy = random.choice(strategies_3)
 
         # generate response
