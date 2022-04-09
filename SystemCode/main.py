@@ -37,8 +37,8 @@ def request_handler(msg):  # directly monitor telegram
                 bot.sendMessage(chat_id, resources)
         elif user_utterances.lower() in USER_END_PHRASES:
             if not feedback[username]:
-                bot.sendMessage(chat_id, str("Please give some feedback(1-10): "))
                 feedback[username] = True
+                bot.sendMessage(chat_id, str("Please give some feedback(1-10): "))
         elif re.search(CHAT_REGEX, user_utterances.lower()) and not feedback[username]:
             response = chat_conv(user_utterances, history, username)
             # response = chat_conv(user_utterances, history)
@@ -50,7 +50,7 @@ def request_handler(msg):  # directly monitor telegram
             print(response)
             bot.sendMessage(chat_id, response)
 
-    if feedback[username]:
+    if feedback[username] and msg['text'].lower() not in USER_END_PHRASES:
         fb_resp = str(msg['text'])
         print(fb_resp)
         risk_score, combined_user_texts = get_risk(history, username)
@@ -67,11 +67,11 @@ def request_handler(msg):  # directly monitor telegram
                         + str(problem_category) + ", " + str(risk_score[0]) + ", " + str(fb_resp) + "\n"
             file_object.write(data_user)
         history.pop(username)
+        feedback[username] = False
 
         end_msg = "AI: " + random.choice(END_MSG)
         print(end_msg)
         bot.sendMessage(chat_id, str(end_msg))
-
         print(history)
 
 bot = telepot.Bot(BOT_TOKEN)
