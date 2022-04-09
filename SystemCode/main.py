@@ -43,8 +43,8 @@ def request_handler(msg):  # directly monitor telegram
             risk_score, combined_user_texts = get_risk(history)
             print("Risk Score:", risk_score)
             # get the final condition type ['emotional','family','friendship','others','relationship','school','work']
-            condition_type = condition_classify(combined_user_texts)
-            # condition_type = predict_sentiment(combined_user_texts)  # Using BERT
+
+            condition_type = predict_sentiment(combined_user_texts)  # Using BERT
             print("Condition Type:", condition_type)
             # if user risk_score is above threshold, send additional help links
             if risk_score > 0.5:
