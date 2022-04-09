@@ -7,14 +7,11 @@ from conversation.conv_interact import *
 from SystemCode.condition.condition_inference import get_risk
 from SystemCode.problem.problem_inference import get_problem
 
-history = {'dialog': [], }
+history = {}
 USER_END_PHRASES = [
     "bye",
     "thanks",
     "thank you",
-    "alright",
-    "okay",
-    "ok",
     "quit"
 ]
 
@@ -26,9 +23,8 @@ def request_handler(msg):  # directly monitor telegram
     if username not in history:
         history[username]=[]
         history[username]['feedback']=False
-    
-    
-    if msg_type == "text" and re.search(START_REGEX, str(msg['text'].lower())) and !history[username]['feedback']:
+
+    if msg_type == "text" and re.search(START_REGEX, str(msg['text'].lower())) and not history[username]['feedback']:
         start = 1
         start_msg = random.choice(GREETINGS) + username + random.choice(WELCOME_MSG)
         bot.sendMessage(chat_id, str(start_msg))
@@ -39,11 +35,7 @@ def request_handler(msg):  # directly monitor telegram
             for resources in HOTLINES_LIST:
                 bot.sendMessage(chat_id, resources)
         elif user_utterances.lower() in USER_END_PHRASES :
-            
-            if !history[username]['feedback']:
-                end_msg = "AI: " + random.choice(END_MSG)
-                print(end_msg)
-                bot.sendMessage(chat_id, str(end_msg))
+            if not history[username]['feedback']:
                 # get the high/low risk score of the user (0 to 1) based on the dialogue history
                 risk_score, combined_user_texts = get_risk(history, username)
                 print("Risk Score:", risk_score)
@@ -55,26 +47,23 @@ def request_handler(msg):  # directly monitor telegram
                 if risk_score > 0.5:
                     print(str(PROFESSIONAL_HELP_MSG[0]))
                     bot.sendMessage(chat_id, str(PROFESSIONAL_HELP_MSG[0]))
+                fb_resp = ""
+                # TO BE UPDATED WITH FEEDBACK
+                bot.sendMessage(chat_id, str("Feedback: "))
+                fb_resp = bot.getUpdates()
 
-                history[username]['feedback']=True 
-            
-            else:
-                ### end dialogue
-            
+                with open("insight_data.txt", "a") as file_object:
+                    # Append 'hello' at the end of file
+                    data_user = str(msg['from']['username']) + ", " \
+                                + str(problem_category) + ", " + str(risk_score[0]) + ", " + fb_resp + "\n"
+                    file_object.write(data_user)
+                history[username]['feedback']=True
 
-        elif history[username]['feedback']:
-            fb_resp=""
-            #TO BE UPDATED WITH FEEDBACK
-            bot.sendMessage(chat_id, str("Feedback: "))
-            fb_resp = bot.getUpdates()
-            with open("insight_data.txt", "a") as file_object:
-                # Append 'hello' at the end of file
-                data_user = str(msg['from']['username']) + ", " \
-                            + str(problem_category) + ", " + str(risk_score[0]) + ", " + fb_resp + "\n"
-                file_object.write(data_user)
-            
+                end_msg = "AI: " + random.choice(END_MSG)
+                print(end_msg)
+                bot.sendMessage(chat_id, str(end_msg))
 
-        elif re.search(CHAT_REGEX, user_utterances.lower()) and history[username]['feedback']:
+        elif re.search(CHAT_REGEX, user_utterances.lower()) and not history[username]['feedback']:
             response = chat_conv(user_utterances, history, username)
             # response = chat_conv(user_utterances, history)
             print(response)
