@@ -13,7 +13,8 @@ USER_END_PHRASES = [
     "bye",
     "thanks",
     "thank you",
-    "quit"
+    "quit",
+    "end"
 ]
 
 def request_handler(msg):  # directly monitor telegram
