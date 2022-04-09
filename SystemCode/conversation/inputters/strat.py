@@ -75,7 +75,8 @@ def featurize(
 def convert_data_to_inputs(data, toker: PreTrainedTokenizer, **kwargs):
     process = lambda x: toker.convert_tokens_to_ids(toker.tokenize(x))
     
-    dialog = data['dialog']
+    # dialog = data['dialog']
+    dialog = data
     inputs = []
     context = []
     

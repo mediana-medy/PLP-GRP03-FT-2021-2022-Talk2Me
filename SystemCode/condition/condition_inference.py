@@ -6,10 +6,10 @@ from keras.models import load_model
 import pickle
 
 # Function to preprocess dialog history and get user's risk score
-def get_risk(history):
+def get_risk(history, username):
     # Getting all the user utterances as a series
     user_texts = []
-    for utterance in history['dialog']:
+    for utterance in history[username]:
         if utterance['speaker'] == 'usr':
             user_texts.append(utterance['text'])
     user_texts = pd.Series(user_texts)
@@ -26,10 +26,10 @@ def get_risk(history):
     combined_user_texts_series = pd.Series([combined_user_texts.strip()])
 
     # load model
-    model = load_model('../model/condition_bilstm_rec_dp.h5')
+    model = load_model('model/condition_bilstm_rec_dp.h5')
 
     # loading saved tokenizer
-    with open('../../TrainingCode/ProblemClassificationModel/condition.pickle', 'rb') as handle:
+    with open('model/condition_bilstm.pickle', 'rb') as handle:
         tokenizer = pickle.load(handle)
 
     # Input the combined_user_texts to the risk prediction model if it is not empty

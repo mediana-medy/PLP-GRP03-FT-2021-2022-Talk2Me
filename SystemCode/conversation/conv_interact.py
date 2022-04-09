@@ -54,7 +54,7 @@ class Args():
        self.label_num = None
 
 
-def chat_conv(msg, history):
+def chat_conv(msg, history, username):
     args = Args()
 
     device = torch.device("cuda" if torch.cuda.is_available() and args.use_gpu else "cpu")
@@ -128,7 +128,7 @@ def chat_conv(msg, history):
 
     while True:
         try:
-            if args.single_turn and len(history['dialog']) > 0:
+            if args.single_turn and len(history[username]) > 0:
                 raise EOFError
             while not msg:
                 return "invalid"
@@ -139,7 +139,7 @@ def chat_conv(msg, history):
             eof_once = True
             save_name = datetime.datetime.now().strftime('%Y-%m-%d%H%M%S')
             try:
-                if len(history['dialog']) > 0:
+                if len(history[username]) > 0:
                     with open(os.path.join(output_dir, save_name + '.json'), 'w') as f:
                         json.dump(history, f, ensure_ascii=False, indent=2)
             except PermissionError as e:
@@ -149,28 +149,29 @@ def chat_conv(msg, history):
             print('\n\nA new conversation starts!')
             continue
 
-        history['dialog'].append({
+        history[username].append({
             'text': _norm(msg),
             'speaker': 'usr',
         })
 
         # for the first 3 user utterances, take a strategy from strategies_1 list
-        if len(history['dialog']) < 7:
+        if len(history[username]) < 7:
             strategy = random.choice(strategies_1)
         # for the next 3 user utterances, take a strategy from strategies_2 list
-        elif len(history['dialog']) > 6 and len(history['dialog']) < 13:
+        elif len(history[username]) > 6 and len(history[username]) < 13:
             strategy = random.choice(strategies_2)
         # for 7th and after user utterances, take a strategy from strategies_3 list
         else:
             strategy = random.choice(strategies_3)
 
         # generate response
-        history['dialog'].append({  # dummy tgt
+        history[username].append({  # dummy tgt
             'text': 'n/a',
             'speaker': 'sys',
             'strategy': strategy,
         })
-        inputs = inputter.convert_data_to_inputs(history, toker, **dataloader_kwargs)
+
+        inputs = inputter.convert_data_to_inputs(history[username], toker, **dataloader_kwargs)
         inputs = inputs[-1:]
         features = inputter.convert_inputs_to_features(inputs, toker, **dataloader_kwargs)
         batch = inputter.prepare_infer_batch(features, toker, interact=True)
@@ -182,8 +183,8 @@ def chat_conv(msg, history):
         out = cut_seq_to_eos(out, eos)
         text = toker.decode(out).encode('ascii', 'ignore').decode('ascii').strip()
 
-        history['dialog'].pop()
-        history['dialog'].append({
+        history[username].pop()
+        history[username].append({
             'text': text,
             'speaker': 'sys',
             'strategy': strategy,

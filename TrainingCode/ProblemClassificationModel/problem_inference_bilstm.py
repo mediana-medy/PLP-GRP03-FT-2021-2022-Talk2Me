@@ -19,12 +19,12 @@ from keras.models import load_model
 import pickle
 
 
-def condition_classify(str):
+def problem_classify(str):
     # Preparation before input
 
     # loading saved tokenizer
     tokenizer = Tokenizer()
-    with open('condition.pickle', 'rb') as handle:
+    with open('../../SystemCode/model/condition_bilstm.pickle', 'rb') as handle:
         tokenizer = pickle.load(handle)
 
     word_index = tokenizer.word_index  # A dictionary like "i" : 1 ; not necessary, but make it easier to match words with GLOVE_6B
@@ -46,7 +46,7 @@ def condition_classify(str):
         # Padding the sentences
         input_3 = pad_sequences(input_2, padding='post', maxlen=maxlen)
 
-        bilstm_rec = load_model("situation_bilstm_recdp20_78_71.h5")
+        bilstm_rec = load_model("problem_bilstm_recdp20_78_71.h5")
         # bilstm_rec.summary()
         y_infer = bilstm_rec.predict(input_3)
 
@@ -64,4 +64,4 @@ def condition_classify(str):
 
 
 if __name__ == '__main__':
-    print(condition_classify("I have a total bad day."))
+    print(problem_classify("I have a total bad day."))
