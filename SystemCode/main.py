@@ -57,8 +57,8 @@ def request_handler(msg):  # directly monitor telegram
         problem_category = get_problem(combined_user_texts)
         # if user risk_score is above threshold, send additional help links
         if risk_score > 0.5:
-            print(str(PROFESSIONAL_HELP_MSG[0]))
-            bot.sendMessage(chat_id, str(PROFESSIONAL_HELP_MSG[0]))
+            print(str(SCC_WEBSITES[0]))
+            bot.sendMessage(chat_id, str(SCC_WEBSITES[0]))
         print("problem, riskscore: ", problem_category, risk_score[0], fb_resp)
         with open("insight_data.txt", "a") as file_object:
             # Append 'hello' at the end of file

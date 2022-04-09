@@ -22,7 +22,7 @@ END_MSG = [
     "Feel free to come chat with me again anytime!"
 ]
 
-PROFESSIONAL_HELP_MSG = [
+SCC_WEBSITES = [
     "For professional counselling services, you may wish to consider trying out SCC. https://scc.sg/e/"
 ]
 
