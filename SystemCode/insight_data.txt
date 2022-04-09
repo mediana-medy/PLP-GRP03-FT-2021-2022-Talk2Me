@@ -1,2 +1,5 @@
 username, condition_type, risk_score, feedback
 Medzzy, friendship, 0.032313105, 
+Medzzy, relationship, 0.6609159, []
+Medzzy, relationship, 0.25677308, []
+Medzzy, relationship, 0.25677308, ('text', 'private', 651426614)
