@@ -1,2 +1,3 @@
 username, condition_type, risk_score, feedback
 Medzzy, friendship, 0.27350265, 2
+Medzzy, friendship, 0.0017611847, 2

@@ -156,15 +156,12 @@ def chat_conv(msg, history, username):
 
         # for the first 3 user utterances, take a strategy from strategies_1 list
         if len(history[username]) < 7:
-            print("Le")
             strategy = random.choice(strategies_1)
         # for the next 3 user utterances, take a strategy from strategies_2 list
         elif len(history[username]) > 6 and len(history[username]) < 13:
-            print("mid")
             strategy = random.choice(strategies_2)
         # for 7th and after user utterances, take a strategy from strategies_3 list
         else:
-            print("end")
             strategy = random.choice(strategies_3)
 
         # generate response

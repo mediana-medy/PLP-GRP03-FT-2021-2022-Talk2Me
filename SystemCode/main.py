@@ -18,13 +18,14 @@ USER_END_PHRASES = [
 
 def request_handler(msg):  # directly monitor telegram
     (msg_type, chat_type, chat_id) = telepot.glance(msg)
-    print(msg_type, chat_type, chat_id, msg["from"]["username"], msg["text"])
+    # print(msg_type, chat_type, chat_id, msg["from"]["username"], msg["text"])
     start = 0
     username = msg['from']['username']
     if username not in history:
         history[username]=[]
         feedback[username]=False
 
+    print(history)
     if msg_type == "text" and re.search(START_REGEX, str(msg['text'].lower())):
         start = 1
         start_msg = random.choice(GREETINGS) + username + random.choice(WELCOME_MSG)
@@ -38,7 +39,7 @@ def request_handler(msg):  # directly monitor telegram
         elif user_utterances.lower() in USER_END_PHRASES:
             if not feedback[username]:
                 feedback[username] = True
-                bot.sendMessage(chat_id, str("Please give some feedback(1-10): "))
+                bot.sendMessage(chat_id, str("Please rate TalkToMe bot from Bad (1) to excellent (10): "))
         elif re.search(CHAT_REGEX, user_utterances.lower()) and not feedback[username]:
             response = chat_conv(user_utterances, history, username)
             # response = chat_conv(user_utterances, history)
@@ -52,7 +53,6 @@ def request_handler(msg):  # directly monitor telegram
 
     if feedback[username] and msg['text'].lower() not in USER_END_PHRASES:
         fb_resp = str(msg['text'])
-        print(fb_resp)
         risk_score, combined_user_texts = get_risk(history, username)
         # get the final condition type ['emotional','family','friendship','others','relationship','school','work']
         problem_category = get_problem(combined_user_texts)
@@ -72,7 +72,6 @@ def request_handler(msg):  # directly monitor telegram
         end_msg = "AI: " + random.choice(END_MSG)
         print(end_msg)
         bot.sendMessage(chat_id, str(end_msg))
-        print(history)
 
 bot = telepot.Bot(BOT_TOKEN)
 MessageLoop(bot, request_handler).run_as_thread()
