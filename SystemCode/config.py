@@ -8,10 +8,10 @@ GREETINGS = ["Hello ", "Hi ", "Good Day, "]
 WELCOME_MSG = [
     ". Welcome to Talk2Me Chatbot. How can I help you today?\n"
     "1. If you are looking for someone to chat and share your feeling /chat, or \n"
-    "2. Hotline /hotline to ask for help, \nYou are coming to the right place!",
+    "2. Hotline /hotlines to retrieve mental well-being resources and hotline, \nYou are coming to the right place!",
 
     ". Welcome to Talk2Me Chatbot.\n"
-    "For leisure chatting, click /chat\nFor Hotline, click /hotline",
+    "For leisure chatting, click /chat\nFor Hotline, click /hotlines",
 
     ". Welcome to Talk2Me Chatbot.\n"
     "How can I assist you today?"
