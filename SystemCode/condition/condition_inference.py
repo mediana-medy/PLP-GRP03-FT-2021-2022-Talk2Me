@@ -26,10 +26,10 @@ def get_risk(history):
     combined_user_texts_series = pd.Series([combined_user_texts.strip()])
 
     # load model
-    model = load_model('model/condition_bilstm_rec_dp.h5')
+    model = load_model('../model/condition_bilstm_rec_dp.h5')
 
     # loading saved tokenizer
-    with open('condition.pickle', 'rb') as handle:
+    with open('../../TrainingCode/ProblemClassificationModel/condition.pickle', 'rb') as handle:
         tokenizer = pickle.load(handle)
 
     # Input the combined_user_texts to the risk prediction model if it is not empty

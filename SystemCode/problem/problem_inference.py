@@ -142,10 +142,10 @@ pad_token_idx = tokenizer.convert_tokens_to_ids(pad_token)
 unk_token_idx = tokenizer.convert_tokens_to_ids(unk_token)
 max_input_length = tokenizer.max_model_input_sizes['bert-base-uncased']
 
-model.load_state_dict(torch.load("tut6-model.pt"))
+model.load_state_dict(torch.load("model/problem_bert.pt"))
 model = model.to(device)
 
-def predict_sentiment(sentence):
+def get_problem(sentence):
     model.eval()
     tokens = tokenizer.tokenize(sentence)
     tokens = tokens[:max_input_length-2]
@@ -159,4 +159,4 @@ def predict_sentiment(sentence):
 
 
 if __name__ == '__main__':
-    predict_sentiment("I have totally a bad day")
+    get_problem("I have totally a bad day")

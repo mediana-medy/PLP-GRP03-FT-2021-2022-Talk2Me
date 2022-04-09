@@ -46,7 +46,7 @@ def condition_classify(str):
         # Padding the sentences
         input_3 = pad_sequences(input_2, padding='post', maxlen=maxlen)
 
-        bilstm_rec = load_model("model/situation_bilstm_recdp20_78_71.h5")
+        bilstm_rec = load_model("situation_bilstm_recdp20_78_71.h5")
         # bilstm_rec.summary()
         y_infer = bilstm_rec.predict(input_3)
 
