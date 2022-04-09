@@ -142,7 +142,7 @@ pad_token_idx = tokenizer.convert_tokens_to_ids(pad_token)
 unk_token_idx = tokenizer.convert_tokens_to_ids(unk_token)
 max_input_length = tokenizer.max_model_input_sizes['bert-base-uncased']
 
-model.load_state_dict(torch.load("model/problem_bert.pt"))
+model.load_state_dict(torch.load("problem/problem_bert.pt"))
 model = model.to(device)
 
 def get_problem(sentence):

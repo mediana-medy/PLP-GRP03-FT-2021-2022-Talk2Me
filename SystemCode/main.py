@@ -11,15 +11,13 @@ history = {}
 feedback = {}
 USER_END_PHRASES = [
     "bye",
-    "thanks",
-    "thank you",
     "quit",
     "end"
 ]
 
 def request_handler(msg):  # directly monitor telegram
     (msg_type, chat_type, chat_id) = telepot.glance(msg)
-    # print(msg_type, chat_type, chat_id, msg["from"]["username"], msg["text"])
+    print(msg_type, chat_type, chat_id, msg["from"]["username"], msg["text"])
     start = 0
     username = msg['from']['username']
     if username not in history:

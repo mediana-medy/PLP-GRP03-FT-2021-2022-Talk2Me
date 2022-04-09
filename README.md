@@ -25,6 +25,9 @@
 
 Please refer to [user guide](https://github.com/mediana-medy/PLP-GRP03-FT-2021-2022-Talk2Me)
 
+Shared folder to download the model:
+[shareddrive](https://drive.google.com/drive/folders/1Bl9YKyL3kcCkyzXQ8ujgSVzVob9LvhU4?usp=sharing)
+
 ---
 ## SECTION 5 : PROJECT REPORT / PAPER
 Refer to project report at Github Folder: [ProjectReport](https://github.com/mediana-medy/PLP-GRP03-FT-2021-2022-Talk2Me)
