@@ -122,8 +122,8 @@ def chat_conv(msg, history, username):
     #history = {'dialog': [], }
 
     # Conversation strategies for early, mid, late conversation stages
-    strategies_1 = ["Question", "Restatement or Paraphrasing", "Reflection of feelings", "Self-disclosure"]
-    strategies_2 = ["Reflection of feelings", "Self-disclosure", "Affirmation and Reassurance", "Others"]
+    strategies_1 = ["Question", "Restatement or Paraphrasing"]
+    strategies_2 = ["Reflection of feelings", "Self-disclosure", "Affirmation and Reassurance"]
     strategies_3 = ["Self-disclosure", "Affirmation and Reassurance", "Providing Suggestions", "Information", "Others"]
 
     while True:

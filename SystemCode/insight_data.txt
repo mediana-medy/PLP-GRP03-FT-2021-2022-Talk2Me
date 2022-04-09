@@ -6,3 +6,6 @@ Medzzy, relationship, 0.057926115, 5
 Kristelseet, friendship, 0.0008979047, 8
 sarahh_sy, relationship, 0.0008387603, 8
 Medzzy, friendship, 5.4812746e-05, 8
+sarahh_sy, emotional, 0.059422858, 6
+Medzzy, friendship, 0.24328373, 7
+sarahh_sy, emotional, 0.6049393, 7

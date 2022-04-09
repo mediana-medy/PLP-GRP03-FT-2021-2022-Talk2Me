@@ -35,7 +35,6 @@ def get_risk(history, username):
     # Input the combined_user_texts to the risk prediction model if it is not empty
     if combined_user_texts_series.size > 0:
         predictions = evaluate_text(model,tokenizer,combined_user_texts_series)
-
         risk_score = sum(predictions)/len(predictions)
     else:
         risk_score = -1
