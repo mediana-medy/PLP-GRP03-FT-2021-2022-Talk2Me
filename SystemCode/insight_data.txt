@@ -11,3 +11,4 @@ Medzzy, friendship, 0.24328373, 7
 sarahh_sy, emotional, 0.6049393, 7
 katmsmw, friendship, 0.006685709, 8
 sarahh_sy, friendship, 6.734532e-05, 9
+Medzzy, work, 0.033074766, 4
