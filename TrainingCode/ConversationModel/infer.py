@@ -138,6 +138,7 @@ if eos is None:
     eos = toker.sep_token_id
     assert eos is not None, 'either eos_token_id or sep_token_id should be provided'
 
+
 generation_kwargs = {
     'max_length': args.max_length,
     'min_length': args.min_length,
