@@ -13,7 +13,7 @@ except ImportError:
 class Embedding(object):
     def __init__(self):
         # path = '/home/zhengchujie/wordvector/english/glove6B' # please modify the path manually
-        path = "C:/Users/User/PycharmProjects/Emotional-Support-Conversation/codes_zcj/metric/word2vec"
+        path = "C:/Users/User/PycharmProjects/PLP-GRP03-FT-2021-2022-Talk2Me/TrainingCode/ConversationModel/metric/word2vec"
         self.m = KeyedVectors.load(os.path.join(path, 'glove.6B.300d.model.bin'), mmap='r')
         try:
             self.unk = self.m.vectors.mean(axis=0)
@@ -37,7 +37,7 @@ class Embedding(object):
             vectors = self.m.syn0
         try:
             # return vectors[self.m.vocab[key].index]
-            return vectors[self.m.key_to_index["rock"]]
+            return vectors[self.m.key_to_index[key]]
 
         except KeyError:
             return self.unk
