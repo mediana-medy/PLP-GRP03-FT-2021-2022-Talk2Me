@@ -38,7 +38,7 @@ def request_handler(msg):  # directly monitor telegram
         elif user_utterances.lower() in USER_END_PHRASES:
             if not feedback[username]:
                 feedback[username] = True
-                bot.sendMessage(chat_id, str("Please rate TalkToMe bot from Bad (1) to excellent (10): "))
+                bot.sendMessage(chat_id, str("Thank you for using our chatting services. Please rate TalkToMe bot from poor (1) to excellent (10): "))
         elif re.search(CHAT_REGEX, user_utterances.lower()) and not feedback[username]:
             response = chat_conv(user_utterances, history, username)
             # response = chat_conv(user_utterances, history)
