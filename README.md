@@ -44,7 +44,7 @@ To date, TalkToMe chatbot provides general emotional support to users and retrie
 
 Please refer to [user guide](https://github.com/mediana-medy/PLP-GRP03-FT-2021-2022-Talk2Me/blob/main/ProjectReport/Group3_TalkToMe_UserGuide.pdf)
 
-Shared folder to download the model:
+Shared folder to download the Conversation Model (BlenderBot), Users' Problem Classification Model (BERT) and Glove:
 [GoogleDrive](https://drive.google.com/drive/folders/1Bl9YKyL3kcCkyzXQ8ujgSVzVob9LvhU4?usp=sharing)
 
 ---
