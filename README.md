@@ -38,7 +38,6 @@ To date, TalkToMe chatbot provides general emotional support to users and retrie
 | Mediana | A0231458E |  FrontEnd - Telegram, BackEnd - Python Controller, Conversation Model (BlenderBot), Users' Problem Classification Model (NaiveBayes, DecisionTree, SVM, CNN, BiLSTM), Project Report and User Guide Report | mediana@u.nus.edu |
 |Sarah Wong | A0231507N | BackEnd - Python Controller, Conversation Model (BlenderBot), Users' Condition Classification Model (BiLSTM), Project Report, Demo Video | e0703539@u.nus.edu |
 |Zeng Hanyu | A0231558A|XX |e0703590@u.nus.edu |BackEnd - inference code, Users' Problem Classification Model(Random Forest, RidgeClassifier, Voting Classifier (RF, RC, SVM)),Project Report, User Guide Report, presentation slides.
-
 ---
 
 ## SECTION 5 : USER GUIDE
