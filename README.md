@@ -34,7 +34,7 @@ To date, TalkToMe chatbot provides general emotional support to users and retrie
 
 | Official Full Name  | Student ID (MTech Applicable)  | Work Items (Who Did What) | Email (Optional) |
 | :------------ |:---------------:| :-----| :-----|
-|Liu Ding | A0231429J | BackEnd - Users' Problem Classification Model (BERT with GRU), Project Report, Presentation Slides |e0703461@u.nus.edu |
+|Liu Ding | A0231429J |  Users' Problem Classification Model (BERT with GRU), Project Report, Presentation Slides |e0703461@u.nus.edu |
 | Mediana | A0231458E |  FrontEnd - Telegram, BackEnd - Python Controller, Conversation Model (BlenderBot), Users' Problem Classification Model (NaiveBayes, DecisionTree, SVM, CNN, BiLSTM), User Guide Report and Project Report, Presentation Slides. | mediana@u.nus.edu |
 |Sarah Wong | A0231507N | BackEnd - Python Controller, Conversation Model (BlenderBot), Users' Condition Classification Model (BiLSTM), Project Report, Demo Video, Presentation Slides. | e0703539@u.nus.edu |
 |Zeng Hanyu | A0231558A| BackEnd - inference code, Users' Problem Classification Model(Random Forest, RidgeClassifier, Voting Classifier (RF, RC, SVM)), Project Report, Presentation Slides.|e0703590@u.nus.edu |
