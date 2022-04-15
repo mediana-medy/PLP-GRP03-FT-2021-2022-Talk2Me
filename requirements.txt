@@ -54,3 +54,7 @@ transformers~=4.17.0
 packaging~=21.3
 zipp~=3.7.0
 telepot~=12.7
+nltk~=3.7
+Cython~=0.29.23
+psutil~=5.9.0
+gensim~=4.1.2
